@@ -12,7 +12,7 @@ gulp.task('default', function(cb) {
 
 function build(cb) {
     var fsrc = __dirname;
-    var fdst = path.join(process.cwd(), 'build', 'bs3');
+    var fdst = path.join(process.cwd(), 'build', 'wsmith');
 
     var bower_options = {
         directory:  path.join(fsrc, 'bower_components'),
@@ -32,7 +32,8 @@ function build(cb) {
         gulp.src([fsrc+'/css/**/*.css']).pipe(gulp.dest(path.join(fdst,'css')))
     );
 
-    gulp.src(path.join(__dirname, 'template.html'))
+
+    var s1 = gulp.src(path.join(__dirname, 'template.html'))
         .pipe(inject(es.merge(bower_assets),
             {
                 ignorePath: '/build/',
@@ -43,9 +44,14 @@ function build(cb) {
                 ignorePath: '/build/'
             }))
         .pipe(gulp.dest(path.join(__dirname)))
+
+    var s2 = gulp.src(path.join(__dirname,'img','**','*'))
+        .pipe(gulp.dest(path.join(fdst,'img')))
+
+    es.merge(s1,s2)
         .on('end', function() {
             cb()
-        })
+        });
 }
 
 module.exports = build;
