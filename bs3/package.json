@@ -1,0 +1,23 @@
+{
+  "name": "wikismith-bs3",
+  "version": "0.0.3",
+  "description": "Wikismith Module - Bootstrap 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jeffrey Hicks",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "event-stream": "^3.1.7",
+    "gulp-inject": "^1.0.0",
+    "gulp-util": "^3.0.0",
+    "highlight": "0.2.3",
+    "highlight.js": "^8.1.0",
+    "marked": "^0.3.2",
+    "unique-stream": "^1.0.0",
+    "wiredep": "^1.8.2",
+    "xregexp": "^2.0.0"
+  }
+}
