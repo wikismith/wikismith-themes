@@ -12,7 +12,7 @@ gulp.task('default', function(cb) {
 
 function build(cb) {
     var fsrc = __dirname;
-    var fdst = path.join(process.cwd(), 'build', 'wsmith');
+    var fdst = path.join(process.cwd(), 'build', 'bs3');
 
     var bower_options = {
         directory:  path.join(fsrc, 'bower_components'),
@@ -37,11 +37,13 @@ function build(cb) {
         .pipe(inject(es.merge(bower_assets),
             {
                 ignorePath: '/build/',
-                starttag: '<!-- bower:{{ext}} -->'
+                starttag: '<!-- bower:{{ext}} -->',
+                addRootSlash: false
             }))
         .pipe(inject(es.merge(app_assets),
             {
-                ignorePath: '/build/'
+                ignorePath: '/build/',
+                addRootSlash: false
             }))
         .pipe(gulp.dest(path.join(__dirname)))
 
