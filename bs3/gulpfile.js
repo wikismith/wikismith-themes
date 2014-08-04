@@ -11,6 +11,7 @@ gulp.task('default', function(cb) {
 });
 
 function build(cb) {
+
     var fsrc = __dirname;
     var fdst = path.join(process.cwd(), 'build', 'bs3');
 
@@ -33,17 +34,26 @@ function build(cb) {
     );
 
 
+    if (process.cwd() == __dirname ) {
+        // Usefull for editing the template with relative paths.
+        addRootSlash = false;
+    }
+    else {
+        // Required for Static Site Generation
+        addRootSlash = true;
+    }
+
     var s1 = gulp.src(path.join(__dirname, 'template.html'))
         .pipe(inject(es.merge(bower_assets),
             {
                 ignorePath: '/build/',
                 starttag: '<!-- bower:{{ext}} -->',
-                addRootSlash: false
+                addRootSlash: addRootSlash
             }))
         .pipe(inject(es.merge(app_assets),
             {
                 ignorePath: '/build/',
-                addRootSlash: false
+                addRootSlash: addRootSlash
             }))
         .pipe(gulp.dest(path.join(__dirname)))
 
