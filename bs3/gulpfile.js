@@ -37,11 +37,13 @@ function build(cb) {
         .pipe(inject(es.merge(bower_assets),
             {
                 ignorePath: '/build/',
-                starttag: '<!-- bower:{{ext}} -->'
+                starttag: '<!-- bower:{{ext}} -->',
+                addRootSlash: false
             }))
         .pipe(inject(es.merge(app_assets),
             {
-                ignorePath: '/build/'
+                ignorePath: '/build/',
+                addRootSlash: false
             }))
         .pipe(gulp.dest(path.join(__dirname)))
 
