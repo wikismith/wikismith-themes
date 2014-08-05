@@ -1,0 +1,61 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node',
+1 verbose cli   '/usr/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'generator-bespoke' ]
+2 info using npm@1.4.14
+3 info using node@v0.10.29
+4 verbose node symlink /usr/bin/node
+5 warn package.json npm-install-dest@0.0.1 No repository field.
+6 verbose cache add [ 'generator-bespoke', null ]
+7 verbose cache add name=undefined spec="generator-bespoke" args=["generator-bespoke",null]
+8 verbose parsed url { protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'generator-bespoke',
+8 verbose parsed url   path: 'generator-bespoke',
+8 verbose parsed url   href: 'generator-bespoke' }
+9 silly lockFile 52ccc64a-generator-bespoke generator-bespoke
+10 verbose lock generator-bespoke /home/vagrant/.npm/52ccc64a-generator-bespoke.lock
+11 silly lockFile 52ccc64a-generator-bespoke generator-bespoke
+12 silly lockFile 52ccc64a-generator-bespoke generator-bespoke
+13 verbose addNamed [ 'generator-bespoke', '' ]
+14 verbose addNamed [ null, '*' ]
+15 silly lockFile cab4950f-generator-bespoke generator-bespoke@
+16 verbose lock generator-bespoke@ /home/vagrant/.npm/cab4950f-generator-bespoke.lock
+17 silly addNameRange { name: 'generator-bespoke', range: '*', hasData: false }
+18 verbose url raw generator-bespoke
+19 verbose url resolving [ 'http://registry.npmjs.org/', './generator-bespoke' ]
+20 verbose url resolved http://registry.npmjs.org/generator-bespoke
+21 info trying registry request attempt 1 at 08:52:40
+22 http GET http://registry.npmjs.org/generator-bespoke
+23 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+24 info trying registry request attempt 2 at 08:54:10
+25 http GET http://registry.npmjs.org/generator-bespoke
+26 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND
+27 info trying registry request attempt 3 at 08:56:30
+28 http GET http://registry.npmjs.org/generator-bespoke
+29 silly lockFile cab4950f-generator-bespoke generator-bespoke@
+30 silly lockFile cab4950f-generator-bespoke generator-bespoke@
+31 error network getaddrinfo ENOTFOUND
+31 error network This is most likely not a problem with npm itself
+31 error network and is related to network connectivity.
+31 error network In most cases you are behind a proxy or have bad network settings.
+31 error network
+31 error network If you are behind a proxy, please make sure that the
+31 error network 'proxy' config is set properly.  See: 'npm help config'
+32 error System Linux 3.2.0-58-generic
+33 error command "/usr/bin/node" "/usr/bin/npm" "install" "generator-bespoke"
+34 error cwd /home/vagrant/RubymineProjects/wikismith/wikismith_themes
+35 error node -v v0.10.29
+36 error npm -v 1.4.14
+37 error syscall getaddrinfo
+38 error code ENOTFOUND
+39 error errno ENOTFOUND
+40 verbose exit [ 1, true ]
