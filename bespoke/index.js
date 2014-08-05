@@ -39,12 +39,36 @@ function endify_headings(html) {
 }
 
 
+function section_with_style(body) {
+    var re = xregexp.XRegExp;
+    var img = re('<!--- *(?<text>.*?) *-->','sgi');
+
+    var bgStyle = '';
+    var classes = '';
+    var dataState = '';
+    re.forEach(body, img, function(matches) {
+        var t = matches.text;
+        if ( (/\.(gif|jpg|jpeg|tiff|png)$/i).test(t) ){
+            classes = 'gif';
+            bgStyle = ' style="background-image: url('+matches.text+')" ';
+        }
+        else {
+            dataState = ' data-bespoke-state="'+t+'" ';
+        }
+
+    } );
+
+    return '<section '+dataState + 'class="'+classes+'" '+bgStyle+'>';
+}
+
+
 function sectionify_headings(html) {
     var re = xregexp.XRegExp;
-
-    var rowRegex = re('(?<body><h[2345].*?)(?<tail>(<!-- h[12345] -->|<!-- end -->))','sgi')
-
-    html = re.replace(html,rowRegex,"<section>${body}</section>${tail}");
+    var rowRegex = re('(?<body><h[12345].*?)(?<tail>(<!-- h[12345] -->|<!-- end -->))','sgi')
+    html = re.replace(html,rowRegex, function(matches) {
+        var section_tag = section_with_style(matches.body);
+        return section_tag + matches.body+"</section>"+matches.tail;
+    });
     return html;
 }
 
@@ -52,7 +76,7 @@ function sectionify_headings(html) {
 function render(file) {
     var template = String(fs.readFileSync(path.join(__dirname, 'template.html')));
 
-    var h = marked(file.body);;
+    var h = marked(file.body);
     var h2 = endify_headings(h);
     var h3 = sectionify_headings(h2);
 

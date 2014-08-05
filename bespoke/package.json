@@ -31,6 +31,7 @@
     "highlight.js": "^8.1.0",
     "insert-css": "^0.2.0",
     "marked": "^0.3.2",
+    "nib": "^1.0.3",
     "opn": "^0.1.2",
     "stream-combiner": "^0.2.1",
     "through": "^2.3.4",

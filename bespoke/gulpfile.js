@@ -15,6 +15,7 @@ var pkg = require('./package.json'),
   opn = require('opn'),
   path = require('path'),
   es = require('event-stream');
+  nib = require('nib');
 
 
 var isDist = true; // process.argv.indexOf('serve') === -1;
@@ -39,7 +40,8 @@ function css() {
         .pipe(stylus({
             // Allow CSS to be imported from node_modules and bower_components
             'include css': true,
-            'paths': [path.join(__dirname, 'node_modules'), path.join(__dirname,'bower_components')]
+            'paths': [path.join(__dirname, 'node_modules'), path.join(__dirname,'bower_components')],
+            use: [nib()]
         }))
         .pipe(autoprefixer('last 2 versions', { map: false }))
         .pipe(isDist ? csso() : through())
